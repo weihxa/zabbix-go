@@ -22,3 +22,18 @@ func TestClient_GetHosts(t *testing.T) {
 	}
 	fmt.Println(hosts)
 }
+func TestClient_GetHostgroups(t *testing.T) {
+
+	session, err := common.NewClient("http://127.0.0.1/api_jsonrpc.php", common.PlaceToken("0768e85be0f6de1a93fe9ee8ed26fdbd7800ddceba3cceb454bd3080788d20e0"))
+	if err != nil {
+		panic(err)
+	}
+	client, _ := NewClient(session)
+	hosts, err := client.GetHostgroups(HostgroupGetParams{
+		GroupIDs: []string{"1", "4"},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(hosts)
+}
